@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="MVaP">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/MVaP.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
