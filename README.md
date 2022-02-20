@@ -1,8 +1,11 @@
-Devoir Maison Théorie du langage Licence 3 Informatique
+Devoir Maison théorie du langage Licence 3 Informatique
+
 Groupe: PRONOST Sacha, SIEPKA Aurélien
 
 Commande:
+
 Préalable:
+
 export CLASSPATH=.:"/usr/share/java/*":$CLASSPATH
 
 Mise en place de Calcul:
