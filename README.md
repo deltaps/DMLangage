@@ -11,7 +11,7 @@ export CLASSPATH=.:"/usr/share/java/*":$CLASSPATH
 Mise en place de Calcul:
 
 java org.antlr.v4.Tool Calcul.g4
-javac Calcul*.java
+javac *.java
 
 Lancer Calcul avec un calcul:
 java org.antlr.v4.runtime.misc.TestRig Calcul 'calcul' -gui > ....mvap
