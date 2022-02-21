@@ -117,7 +117,7 @@ write returns [ String code ]
       }
     ;
 
-boucle_while returns [ String code ]
+boucle_while returns [ String code ] // On à fait seulement pour les bloc, mais il doit aussi être possible de faire while()..... sans accolade
     : 'while(' + condition + '){' + instruction + '}'
       {
         String debut = getNewLabel();
