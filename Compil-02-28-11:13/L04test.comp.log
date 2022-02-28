@@ -1,4 +1,0 @@
-Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
-line 2:4 no viable alternative at input 'fung'
-line 3:9 no viable alternative at input 'returnx'
-line 4:0 mismatched input '}' expecting {<EOF>, '-', '(', 'read(', 'write(', 'while(', 'true', 'false', ';', NEWLINE, ENTIER, IDENTIFIANT}

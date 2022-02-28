@@ -1,4 +1,0 @@
-Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
-line 3:0 mismatched input 'write(' expecting {';', NEWLINE}
-line 4:2 mismatched input 'x' expecting {'-', '(', ENTIER}
-line 5:0 mismatched input '}' expecting {<EOF>, '-', '(', 'read(', 'write(', 'while(', 'true', 'false', ';', NEWLINE, ENTIER, IDENTIFIANT}

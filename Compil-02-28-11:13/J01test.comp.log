@@ -1,4 +1,0 @@
-Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
-line 4:4 no viable alternative at input 'for('
-line 4:11 no viable alternative at input 'i<'
-line 4:18 mismatched input 'i' expecting {'-', '(', ENTIER}

@@ -1,8 +1,0 @@
-PUSHI 0
-PUSHI 42
-STOREG 0
-nullnullnullnullPUSHG 0
-WRITE
-POP
-HALT
-

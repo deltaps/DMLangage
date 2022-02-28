@@ -1,8 +1,0 @@
-Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
-line 2:17 missing ')' at 'i'
-line 2:24 mismatched input ')' expecting {';', NEWLINE}
-line 5:21 extraneous input 'false' expecting ')'
-line 8:18 missing ')' at 'true'
-line 8:26 mismatched input 'true' expecting {';', NEWLINE}
-line 8:38 mismatched input 'i' expecting {';', NEWLINE}
-line 8:45 mismatched input ')' expecting {';', NEWLINE}

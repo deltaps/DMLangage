@@ -1,3 +1,0 @@
-Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
-line 2:19 mismatched input 'Bien' expecting {';', NEWLINE}
-line 3:0 mismatched input 'var' expecting {<EOF>, '-', '(', 'read(', 'write(', 'while(', 'true', 'false', ';', NEWLINE, ENTIER, IDENTIFIANT}

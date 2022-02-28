@@ -40,6 +40,17 @@ grammar Calcul;
         throw new IllegalArgumentException("Opérateur arithmétique incorrect : '"+op+"'");
       }
     }
+    private String evallogique(String op){
+      if(op.equals("!")){
+        return "PUSHI 1\n" + "NEQ\n"; //Pour inverser on regarde si c'est différent de 1
+      }
+      else if(op.equals("&&")){
+        return "ADD\n" + "PUSHI 2\n" + "EQUAL\n";
+      }
+      else if(op.equals("||")){
+        return "ADD\n" + "PUSHI 1\n" + "SUP\n";
+      }
+    }
 }
 
 start : calcul EOF;
@@ -167,8 +178,10 @@ boucle_while returns [ String code ]
     ;
 
 condition returns [String code]
-    : a=expression op=OPERATEUR b=expression {$code = $a.code + $b.code + evalop($op.text);}
-    | 'true' { $code = "PUSHI 1\n";}
+    : NOT a=condition {$code = $a.code evallogique($NOT.text);}
+    | a=condition AND b=condition {$code = $a.code + $b.code + evallogique($AND.text);}
+    | a=condition OR b=condition {$code = $a.code + $b.code + evallogique($OR.text);}
+    | 'true'  {$code = "PUSHI 1\n";}
     | 'false' {$code = "PUSHI 0\n";}
     ;
 
@@ -188,6 +201,12 @@ ENTIER : ('0'..'9')+  ;
 IDENTIFIANT : (('A' .. 'Z') | ('a' .. 'z'))+;
 
 OPERATEUR : ('=='|'!='|'<>'|'<'|'>'|'<='|'>=');
+
+AND : ('&&');
+
+OR : ('||');
+
+NOT : ('!');
 
 COMMENTAIRE
     : (('//')+~('\n')+ | ('/*').*?('*/') | ('%')+~('\n')+ ) -> skip;

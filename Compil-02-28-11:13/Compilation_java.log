@@ -1,5 +1,0 @@
-warning: Supported source version 'RELEASE_6' from annotation processor 'org.sonatype.guice.bean.scanners.index.SisuIndexAPT6' less than -source '11'
-warning: Supported source version 'RELEASE_7' from annotation processor 'org.netbeans.modules.openide.util.ServiceProviderProcessor' less than -source '11'
-warning: Supported source version 'RELEASE_7' from annotation processor 'org.netbeans.modules.openide.util.NamedServiceProcessor' less than -source '11'
-warning: Supported source version 'RELEASE_6' from annotation processor 'org.netbeans.modules.openide.util.NbBundleProcessor' less than -source '11'
-4 warnings
