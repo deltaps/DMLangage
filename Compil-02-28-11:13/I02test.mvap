@@ -1,0 +1,53 @@
+PUSHI 1
+PUSHI 42
+nullnullnullnullnullnullnullPUSHG 0
+WRITE
+POP
+nullnullPUSHG 1
+WRITE
+POP
+nullnullnullnullnullnullnullPUSHG 0
+WRITE
+POP
+nullnullPUSHG 1
+WRITE
+POP
+nullnullnullnullnullPUSHI 1
+PUSHI -1
+MUL
+nullEQUAL
+nullnullPUSHG 0
+WRITE
+POP
+nullnullPUSHG 1
+WRITE
+POP
+nullnullnullnullPUSHI 0
+nullnullnullnullPUSHG 1
+WRITE
+POP
+nullnullPUSHG 0
+WRITE
+POP
+nullnullnullnullPUSHI 1
+nullnullnullnullPUSHG 1
+WRITE
+POP
+nullnullPUSHG 0
+WRITE
+POP
+nullnullnullnullPUSHI 1
+PUSHG 1
+WRITE
+POP
+nullnullnullnullPUSHI 0
+PUSHI 0
+PUSHI 1
+PUSHG 0
+WRITE
+POP
+nullnullPUSHG 1
+WRITE
+POP
+HALT
+

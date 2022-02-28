@@ -1,0 +1,17 @@
+PUSHI 0
+PUSHI 0
+PUSHI 1
+PUSHI 2
+READ
+STOREG 0
+nullnullnullnullnullnullnullPUSHG 1
+WRITE
+POP
+nullnullnullnullnullnullnullnullPUSHG 2
+WRITE
+POP
+nullnullPUSHG 3
+WRITE
+POP
+HALT
+

@@ -1,0 +1,5 @@
+Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
+line 6:8 no viable alternative at input 'repeat\n'
+line 7:9 mismatched input 'nb' expecting {'-', '(', ENTIER}
+line 8:8 mismatched input 'd' expecting {'-', '(', ENTIER}
+line 9:0 mismatched input '}' expecting {<EOF>, '-', '(', 'read(', 'write(', 'while(', 'true', 'false', ';', NEWLINE, ENTIER, IDENTIFIANT}

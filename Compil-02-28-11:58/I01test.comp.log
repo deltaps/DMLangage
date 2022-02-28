@@ -1,0 +1,4 @@
+Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
+line 5:3 no viable alternative at input 'if('
+line 5:10 mismatched input ')' expecting {';', NEWLINE}
+line 6:6 no viable alternative at input 'elsewrite('

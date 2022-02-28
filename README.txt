@@ -23,6 +23,11 @@ Commande:
 		java -cp "/usr/share/java/*:MVaP.jar" MVaPAssembler ....mvap
 		java -jar MVaP.jar -d ....mvap.cbap
 ----------------------------------------------------------------------------
+BENCHMARK
+
+tp-compil-autocor Calcul.g4 AdresseType.java T*.java
+---------------------------------------------------------------------------
+
 Explication de ce que nous avons fait:
 
 	Nous avons terminé la partie F du TP (Traitement du "while" et des blocs), mais nous n'avons pour le moment pas fait d'amélioration.

@@ -1,0 +1,5 @@
+Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
+line 7:19 missing ')' at 'and'
+line 7:27 mismatched input ')' expecting {';', NEWLINE}
+line 11:18 missing ')' at 'or'
+line 11:25 mismatched input ')' expecting {';', NEWLINE}

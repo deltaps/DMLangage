@@ -1,0 +1,6 @@
+Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
+line 2:6 no viable alternative at input 'while('
+line 2:20 mismatched input 'i' expecting {'-', '(', ENTIER}
+line 4:4 extraneous input 'i' expecting {'-', '(', ENTIER}
+line 5:6 no viable alternative at input 'while('
+line 5:19 extraneous input 'i' expecting {'-', '(', ENTIER}

@@ -1,0 +1,14 @@
+PUSHI 0
+READ
+STOREG 0
+nullnullnullPUSHG 0
+PUSHI 10
+INF
+PUSHG 0
+PUSHI 100
+INF
+PUSHG 0
+PUSHI 5
+SUP
+nullnullnullnullnullnullHALT
+

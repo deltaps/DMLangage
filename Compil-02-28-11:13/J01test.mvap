@@ -1,0 +1,12 @@
+PUSHI 0
+PUSHI 0
+PUSHI 42
+STOREG 1
+nullnullnullnullPUSHI 1
+STOREG 0
+nullnullnullSTOREG 0
+nullnullnullnullPUSHG 0
+WRITE
+POP
+HALT
+

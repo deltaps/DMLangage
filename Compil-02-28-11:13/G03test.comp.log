@@ -1,0 +1,4 @@
+Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
+line 3:6 no viable alternative at input 'while('
+line 6:8 mismatched input 'i' expecting {'-', '(', ENTIER}
+line 7:0 mismatched input '}' expecting {<EOF>, '-', '(', 'read(', 'write(', 'while(', 'true', 'false', ';', NEWLINE, ENTIER, IDENTIFIANT}

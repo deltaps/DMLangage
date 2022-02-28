@@ -1,0 +1,25 @@
+Warning: TestRig moved to org.antlr.v4.gui.TestRig; calling automatically
+line 3:3 no viable alternative at input 'if('
+line 3:9 mismatched input ')' expecting {';', NEWLINE}
+line 4:8 no viable alternative at input 'elsewrite('
+line 5:3 no viable alternative at input 'if('
+line 5:10 mismatched input ')' expecting {';', NEWLINE}
+line 6:8 no viable alternative at input 'elsewrite('
+line 7:3 no viable alternative at input 'if('
+line 7:12 mismatched input ')' expecting {';', NEWLINE}
+line 8:8 no viable alternative at input 'elsewrite('
+line 9:3 no viable alternative at input 'if('
+line 9:13 mismatched input 'z' expecting {';', NEWLINE}
+line 9:18 mismatched input ')' expecting {';', NEWLINE}
+line 10:8 no viable alternative at input 'elsewrite('
+line 11:3 no viable alternative at input 'if('
+line 11:14 mismatched input 'z' expecting {';', NEWLINE}
+line 11:19 mismatched input ')' expecting {';', NEWLINE}
+line 12:8 no viable alternative at input 'elsewrite('
+line 13:3 no viable alternative at input 'if('
+line 13:10 mismatched input ')' expecting {';', NEWLINE}
+line 14:3 no viable alternative at input 'if('
+line 14:15 mismatched input 'false' expecting {';', NEWLINE}
+line 14:26 mismatched input 'true' expecting {';', NEWLINE}
+line 14:30 mismatched input ')' expecting {';', NEWLINE}
+line 15:6 no viable alternative at input 'elsewrite('

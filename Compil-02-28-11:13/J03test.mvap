@@ -1,0 +1,6 @@
+PUSHI 0
+PUSHI 0
+nullnullSTOREG 1
+nullnullnullSTOREG 0
+nullnullHALT
+

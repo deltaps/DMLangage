@@ -1,0 +1,12 @@
+PUSHI 7
+LABEL Label1
+PUSHI 0
+JUMPF Label2
+JUMP Label1
+LABEL Label2
+PUSHG 0
+WRITE
+POP
+nullSTOREG 0
+nullnullHALT
+
