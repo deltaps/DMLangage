@@ -48,7 +48,11 @@ grammar Calcul;
         return "ADD\n" + "PUSHI 2\n" + "EQUAL\n";
       }
       else if(op.equals("||")){
-        return "ADD\n" + "PUSHI 1\n" + "SUP\n";
+        return "ADD\n" + "PUSHI 1\n" + "SUPEQ\n";
+      }
+      else {
+        System.err.println("Opérateur relationnels incorrect : '"+op+"'");
+        throw new IllegalArgumentException("Opérateur arithmétique incorrect : '"+op+"'");
       }
     }
 }
@@ -76,6 +80,10 @@ instruction returns [ String code ]
     | boucle_while
     {
       $code = $boucle_while.code;
+    }
+    | branchement
+    {
+      $code = $branchement.code;
     }
     | condition finInstruction
     {
@@ -177,14 +185,32 @@ boucle_while returns [ String code ]
       }
     ;
 
+
 condition returns [String code]
-    : NOT a=condition {$code = $a.code evallogique($NOT.text);}
+    : NOT condition {$code = $condition.code + evallogique($NOT.text);}
     | a=condition AND b=condition {$code = $a.code + $b.code + evallogique($AND.text);}
     | a=condition OR b=condition {$code = $a.code + $b.code + evallogique($OR.text);}
-    | 'true'  {$code = "PUSHI 1\n";}
+    | c=expression op=OPERATEUR d=expression {$code = $c.code + $d.code + evalop($op.text);}
+    | 'true' { $code = "PUSHI 1\n";}
     | 'false' {$code = "PUSHI 0\n";}
     ;
 
+branchement returns [String code]
+    : 'if' '(' condition ')' instruction
+      {
+        String debut = getNewLabel();
+        String fin = getNewLabel();
+        $code = "LABEL " + debut + "\n" +
+          $condition.code +
+          "JUMPF " + fin + "\n" +
+          $instruction.code +
+          "LABEL " + fin + "\n";
+      }
+    | branchement 'else' instruction
+      {
+        $code = $branchement.code + 
+      }
+    ;
 
 //lexer
 
@@ -202,11 +228,11 @@ IDENTIFIANT : (('A' .. 'Z') | ('a' .. 'z'))+;
 
 OPERATEUR : ('=='|'!='|'<>'|'<'|'>'|'<='|'>=');
 
-AND : ('&&');
+AND : '&&';
 
-OR : ('||');
+OR : '||';
 
-NOT : ('!');
+NOT : '!';
 
 COMMENTAIRE
     : (('//')+~('\n')+ | ('/*').*?('*/') | ('%')+~('\n')+ ) -> skip;
