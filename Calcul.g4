@@ -184,7 +184,15 @@ boucle_while returns [ String code ]
           "LABEL " + fin + "\n";
       }
     ;
+/*
+boucle_for returns [ String code ]
+  : 'for' '(' i = assignation ';' condition ';' inc = assignation ')' instruction
+    {
+      $code = i.code +
 
+    }
+  ;
+*/
 
 condition returns [String code]
     : NOT condition {$code = $condition.code + evallogique($NOT.text);}
@@ -196,19 +204,26 @@ condition returns [String code]
     ;
 
 branchement returns [String code]
-    : 'if' '(' condition ')' instruction
+    : 'if' '(' condition ')' a = instruction finInstruction? 'else' b = instruction //? soit une fois sois aucune (si jamais il-y-a une fin d'instruction)
+    {
+      String finIf = getNewLabel();
+      String finElse = getNewLabel();
+
+      $code = $condition.code +
+      "JUMPF " + finIf + "\n" +
+      $a.code +
+      "JUMP " + finElse + "\n"+
+      "LABEL " + finIf + "\n" +
+      $b.code +
+      "LABEL " + finElse + "\n";
+    }
+    | 'if' '(' condition ')' instruction
       {
-        String debut = getNewLabel();
         String fin = getNewLabel();
-        $code = "LABEL " + debut + "\n" +
-          $condition.code +
+        $code = $condition.code +
           "JUMPF " + fin + "\n" +
           $instruction.code +
           "LABEL " + fin + "\n";
-      }
-    | branchement 'else' instruction
-      {
-        $code = $branchement.code + 
       }
     ;
 

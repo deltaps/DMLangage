@@ -107,6 +107,16 @@ public interface CalculListener extends ParseTreeListener {
 	 */
 	void exitCondition(CalculParser.ConditionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CalculParser#branchement}.
+	 * @param ctx the parse tree
+	 */
+	void enterBranchement(CalculParser.BranchementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculParser#branchement}.
+	 * @param ctx the parse tree
+	 */
+	void exitBranchement(CalculParser.BranchementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CalculParser#finInstruction}.
 	 * @param ctx the parse tree
 	 */
