@@ -22,7 +22,7 @@ grammar Calcul;
            throw new IllegalArgumentException("Opérateur arithmétique incorrect : '"+op+"'");
         }
     }
-    private String evalop (String op) {
+    private String evalop (String op) { //evalop est utilsé pour les opérateur relationnels
       if ( op.equals("==")){
         return "EQUAL\n";
       } else if( op.equals("!=")){
@@ -40,7 +40,7 @@ grammar Calcul;
         throw new IllegalArgumentException("Opérateur arithmétique incorrect : '"+op+"'");
       }
     }
-    private String evallogique(String op){
+    private String evallogique(String op){ // Fonction utilisé pour les expressions logique
       if(op.equals("!")){
         return "PUSHI 1\n" + "NEQ\n"; //Pour inverser on regarde si c'est différent de 1
       }
@@ -84,6 +84,10 @@ instruction returns [ String code ]
     | branchement
     {
       $code = $branchement.code;
+    }
+    | repetition
+    {
+      $code = $repetition.code;
     }
     | condition finInstruction
     {
@@ -166,12 +170,6 @@ write returns [ String code ]
     ;
 
 boucle_while returns [ String code ]
-    /* 'while' '(' condition ')' '{' instruction '}'
-      {
-        String debut = getNewLabel();
-        String fin = getNewLabel();
-        $code = "LABEL " + debut + "\n" + $condition.code + "JUMPF " + fin + "\n" + $instruction.code + "JUMP " + debut + "\n" + "LABEL " + fin + "\n";
-      }*/
     : 'while' '(' condition ')' instruction
       {
         String debut = getNewLabel();
@@ -184,15 +182,34 @@ boucle_while returns [ String code ]
           "LABEL " + fin + "\n";
       }
     ;
-/*
-boucle_for returns [ String code ]
+
+repetition returns [ String code ]
   : 'for' '(' i = assignation ';' condition ';' inc = assignation ')' instruction
     {
-      $code = i.code +
-
+      String debut = getNewLabel();
+      String fin = getNewLabel();
+      $code = $i.code +
+      "LABEL " + debut + "\n" +
+      $condition.code +
+      "JUMPF " + fin + "\n" +
+      $instruction.code +
+      $inc.code +
+      "JUMP " + debut + "\n" +
+      "LABEL " + fin + "\n"
+      ;
+    }
+  | 'repeat' instruction finInstruction? 'until' '(' condition ')'
+    {
+      String debut = getNewLabel();
+      String fin = getNewLabel();
+      $code = "LABEL " + debut + "\n" +
+      $condition.code + evallogique("!") +
+      "JUMPF " + fin + "\n" +
+      $instruction.code +
+      "JUMP " + debut + "\n" +
+      "LABEL " + fin + "\n";
     }
   ;
-*/
 
 condition returns [String code]
     : NOT condition {$code = $condition.code + evallogique($NOT.text);}
