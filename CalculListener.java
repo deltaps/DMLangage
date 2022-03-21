@@ -17,6 +17,46 @@ public interface CalculListener extends ParseTreeListener {
 	 */
 	void exitStart(CalculParser.StartContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link CalculParser#fonction}.
+	 * @param ctx the parse tree
+	 */
+	void enterFonction(CalculParser.FonctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculParser#fonction}.
+	 * @param ctx the parse tree
+	 */
+	void exitFonction(CalculParser.FonctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculParser#params}.
+	 * @param ctx the parse tree
+	 */
+	void enterParams(CalculParser.ParamsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculParser#params}.
+	 * @param ctx the parse tree
+	 */
+	void exitParams(CalculParser.ParamsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculParser#args}.
+	 * @param ctx the parse tree
+	 */
+	void enterArgs(CalculParser.ArgsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculParser#args}.
+	 * @param ctx the parse tree
+	 */
+	void exitArgs(CalculParser.ArgsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculParser#retourne}.
+	 * @param ctx the parse tree
+	 */
+	void enterRetourne(CalculParser.RetourneContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculParser#retourne}.
+	 * @param ctx the parse tree
+	 */
+	void exitRetourne(CalculParser.RetourneContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link CalculParser#calcul}.
 	 * @param ctx the parse tree
 	 */
@@ -36,6 +76,16 @@ public interface CalculListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInstruction(CalculParser.InstructionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculParser#bloc}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloc(CalculParser.BlocContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculParser#bloc}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloc(CalculParser.BlocContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CalculParser#expression}.
 	 * @param ctx the parse tree
@@ -96,6 +146,16 @@ public interface CalculListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBoucle_while(CalculParser.Boucle_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link CalculParser#repetition}.
+	 * @param ctx the parse tree
+	 */
+	void enterRepetition(CalculParser.RepetitionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CalculParser#repetition}.
+	 * @param ctx the parse tree
+	 */
+	void exitRepetition(CalculParser.RepetitionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CalculParser#condition}.
 	 * @param ctx the parse tree

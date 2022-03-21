@@ -27,6 +27,54 @@ public class CalculBaseListener implements CalculListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFonction(CalculParser.FonctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFonction(CalculParser.FonctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParams(CalculParser.ParamsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParams(CalculParser.ParamsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArgs(CalculParser.ArgsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArgs(CalculParser.ArgsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRetourne(CalculParser.RetourneContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRetourne(CalculParser.RetourneContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCalcul(CalculParser.CalculContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -46,6 +94,18 @@ public class CalculBaseListener implements CalculListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInstruction(CalculParser.InstructionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBloc(CalculParser.BlocContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBloc(CalculParser.BlocContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -118,6 +178,18 @@ public class CalculBaseListener implements CalculListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBoucle_while(CalculParser.Boucle_whileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRepetition(CalculParser.RepetitionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRepetition(CalculParser.RepetitionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

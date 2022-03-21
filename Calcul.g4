@@ -56,15 +56,31 @@ grammar Calcul;
       }
     }
 
-    private String evalPush(String id){
-      AdresseType at = tableSymboles.getAdresseType(id);       //Adresses positives : variables globales,
-      return (at.adresse >= 0) ? "PUSHG " : "PUSHL ";  //Adresses negatives : variables locales
+    private String evalPush(String id,String type){
+      AdresseType at = tableSymboles.getAdresseType(id);  //Adresses positives : variables globales,
+      System.out.println(type);
+      if(type.equals("double")){
+        return (at.adresse >= 0) ? ("PUSHG " + at.adresse + "\nPUSHG " + (at.adresse+1) + "\n") : ("PUSHL " + at.adresse + "\n PUSHL " + (at.adresse+1) + "\n");
+      }
+      else{
+        return (at.adresse >= 0) ? "PUSHG " + at.adresse + "\n" : "PUSHL " + at.adresse + "\n";  //Adresses negatives : variables locales
+      }
     }
 
     //Renvoie STOREG ou STOREL + l'adresse suivant le type de l'id
     private String evalStore(String id){
       AdresseType at = tableSymboles.getAdresseType(id);        //Adresses positives : variables globales,
       return (at.adresse >= 0) ? "STOREG " : "STOREL "; //Adresses negatives : variables locales
+    }
+
+    private String pushIOrF(String type){
+      String res = "";
+      if(!type.equals("double")){
+        res = "PUSHI ";
+      }else{
+        res = "PUSHF ";
+      }
+      return res;
     }
 }
 
@@ -141,7 +157,7 @@ calcul returns [ String code ]
 @init{ $code = new String();}   // On initialise code, pour ensuite l'utiliser comme accumulateur
 @after{ System.out.println($code); }
     :
-        (decl { $code += $decl.code; })*
+        (decl { $code = $decl.code; })*
         {$code += "JUMP " + "Main\n";}
 
         NEWLINE*
@@ -234,14 +250,14 @@ expression returns [ String code, String type ] //TODO Faire le write
       $code = "PUSHI " + $ENTIER.int + "\n";
       $type = "int";
             }
-    | FLOAT {
-      $code = "PUSHI " + $FLOAT.text + "\n";
+    | DOUBLE {
+      $code = "PUSHF " + $DOUBLE.text + "\n";
       $type = "double";
     }
     | IDENTIFIANT
       {
         AdresseType at = tableSymboles.getAdresseType($IDENTIFIANT.text);
-        $code = evalPush($IDENTIFIANT.text) + at.adresse + "\n";  //Gérer mes variable LOCAL
+        $code = evalPush($IDENTIFIANT.text,at.type);  //Gérer mes variable LOCAL
         $type = at.type;
       }
     | IDENTIFIANT '(' args ')'                  // appel de fonction
@@ -261,8 +277,12 @@ decl returns [ String code ]
     :
         'var' IDENTIFIANT ':' TYPE  finInstruction
         {
-            $code = "PUSHI 0\n";
-            tableSymboles.putVar($IDENTIFIANT.text,$TYPE.text);//TODO mettre aussi double (changer int)
+            tableSymboles.putVar($IDENTIFIANT.text,$TYPE.text);
+            if(!$TYPE.text.equals("double")){
+              $code = "PUSHI 0\n";
+            }else{
+              $code = "PUSHF 0.0\n";
+            }
         }
     |
         'var' IDENTIFIANT ':' TYPE '=' expression finInstruction
@@ -283,7 +303,7 @@ assignation returns [ String code ]
       IDENTIFIANT '+=' expression
         {
           AdresseType at = tableSymboles.getAdresseType($IDENTIFIANT.text);
-          $code = $expression.code + evalPush($IDENTIFIANT.text) + at.adresse + "\n" + "ADD\n" + evalStore($IDENTIFIANT.text) + at.adresse + "\n";
+          $code = $expression.code + evalPush($IDENTIFIANT.text,$expression.type) + "ADD\n" + evalStore($IDENTIFIANT.text) + at.adresse + "\n";
         }
       ;
 
@@ -307,7 +327,7 @@ write returns [ String code ]
           $code = $expression.code + "WRITE\n" + "POP\n";
         }
         else if($expression.type.equals("double")){
-          $code = $expression.code + "WRITEF\n" + "POP\n";
+          $code = $expression.code + "WRITEF\n" + "POP\n" + "POP\n";
         }
       }
     ;
@@ -401,7 +421,7 @@ WS :   (' '|'\t')+ -> skip  ;
 
 ENTIER : ('0'..'9')+  ;
 
-FLOAT: ('0'..'9')+'.'('0'..'9')*;
+DOUBLE: ('0'..'9')+'.'('0'..'9')*;
 
 IDENTIFIANT : (('A' .. 'Z') | ('a' .. 'z'))+;
 
