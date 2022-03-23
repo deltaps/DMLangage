@@ -58,7 +58,6 @@ grammar Calcul;
 
     private String evalPush(String id,String type){
       AdresseType at = tableSymboles.getAdresseType(id);  //Adresses positives : variables globales,
-      System.out.println(type);
       if(type.equals("double")){
         return (at.adresse >= 0) ? ("PUSHG " + at.adresse + "\nPUSHG " + (at.adresse+1) + "\n") : ("PUSHL " + at.adresse + "\n PUSHL " + (at.adresse+1) + "\n");
       }
@@ -157,7 +156,7 @@ calcul returns [ String code ]
 @init{ $code = new String();}   // On initialise code, pour ensuite l'utiliser comme accumulateur
 @after{ System.out.println($code); }
     :
-        (decl { $code = $decl.code; })*
+        (decl { $code += $decl.code; })*
         {$code += "JUMP " + "Main\n";}
 
         NEWLINE*
@@ -254,22 +253,22 @@ expression returns [ String code, String type ] //TODO Faire le write
       $code = "PUSHF " + $DOUBLE.text + "\n";
       $type = "double";
     }
-    | IDENTIFIANT
-      {
-        AdresseType at = tableSymboles.getAdresseType($IDENTIFIANT.text);
-        $code = evalPush($IDENTIFIANT.text,at.type);  //Gérer mes variable LOCAL
-        $type = at.type;
-      }
     | IDENTIFIANT '(' args ')'                  // appel de fonction
         {
-            //AdresseType at = tableSymboles.getAdresseType($IDENTIFIANT.text);
+            $type = tableSymboles.getFunction($IDENTIFIANT.text);
             //$type = at.type;
             $code = "PUSHI 0\n" + $args.code + "CALL " + $IDENTIFIANT.text + "\n";
             for(int i = 0; i < $args.size; i++){
               $code += "POP \n";
             }
         }
-
+    | IDENTIFIANT
+      {
+        System.err.println("Je cherche "+ $IDENTIFIANT.text);
+        AdresseType at = tableSymboles.getAdresseType($IDENTIFIANT.text);
+        $code = evalPush($IDENTIFIANT.text,at.type);  //Gérer mes variable LOCAL
+        $type = at.type;
+      }
     ;
 
 
@@ -315,7 +314,7 @@ read returns [ String code ]
           $code = "READ\n" + evalStore($IDENTIFIANT.text) + at.adresse + "\n";
         }
         else if(at.type.equals("double")){
-          $code = "READF\n" + evalStore($IDENTIFIANT.text) + at.adresse + "\n";
+          $code = "READF\n" + evalStore($IDENTIFIANT.text) + (at.adresse+1) + "\n" + evalStore($IDENTIFIANT.text) + at.adresse + "\n";
         }
       }
     ;
@@ -423,7 +422,7 @@ ENTIER : ('0'..'9')+  ;
 
 DOUBLE: ('0'..'9')+'.'('0'..'9')*;
 
-IDENTIFIANT : (('A' .. 'Z') | ('a' .. 'z'))+;
+IDENTIFIANT : (('A' .. 'Z') | ('a' .. 'z'))(('A' .. 'Z') | ('a' .. 'z')|('0'..'9'))*;
 
 OPERATEUR : ('=='|'!='|'<>'|'<'|'>'|'<='|'>=');
 

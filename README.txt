@@ -25,9 +25,9 @@ Commande:
 ----------------------------------------------------------------------------
 BENCHMARK
 
-tp-compil-autocor Calcul.g4 AdresseType.java T*.java
+LANG=en_US.utf8 tp-compil-autocor Calcul.g4 AdresseType.java T*.java
 ---------------------------------------------------------------------------
 
 Explication de ce que nous avons fait:
 
-	Nous avons terminé la partie F du TP (Traitement du "while" et des blocs), mais nous n'avons pour le moment pas fait d'amélioration.
+	Nous avons terminé la partie N du TP (Tester sur quelques programmes classiques), nous n'avons pas effectué d'amélioration
